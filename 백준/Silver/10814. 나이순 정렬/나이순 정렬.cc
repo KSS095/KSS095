@@ -1,0 +1,27 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+using namespace std;
+
+bool cmd(pair<int, string> a, pair<int, string> b) {
+	return a.first < b.first ? true : false;
+}
+
+int main() {
+	cin.tie(NULL);
+	ios_base::sync_with_stdio(false);
+
+	int N, age;
+	string name;
+	vector<pair<int, string>> member;
+	cin >> N;
+
+	for (int i = 0; i < N; i++) {
+		cin >> age >> name;
+		member.push_back(make_pair(age, name));
+	}
+	stable_sort(member.begin(), member.end(), cmd);
+
+	for (int i = 0; i < N; i++)
+		cout << member[i].first << " " << member[i].second << "\n";
+}
