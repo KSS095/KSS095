@@ -1,7 +1,6 @@
 def find_set(x):
-    if x == parent[x]:
-        return parent[x]
-    parent[x] = find_set(parent[x])
+    if x != parent[x]:
+        parent[x] = find_set(parent[x])
     return parent[x]
 
 def union(x, y):
@@ -9,13 +8,7 @@ def union(x, y):
     root_y = find_set(y)
 
     if root_x != root_y:
-        if rank[root_x] > rank[root_y]:
-            parent[root_y] = root_x
-        elif rank[root_y] > rank[root_x]:
-            parent[root_x] = root_y
-        else:
-            parent[root_y] = root_x
-            rank[root_x] += 1
+        parent[root_y] = root_x
 
 
 def mst(edges):
@@ -37,7 +30,6 @@ for tc in range(1, T + 1):
     edges = [list(map(int, input().split())) for _ in range(E)]
 
     parent = [i for i in range(V + 1)]
-    rank = [0] * (V + 1)
     min_weight_sum = 0
 
     mst_lists = mst(edges)
