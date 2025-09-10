@@ -43,4 +43,4 @@ jobs:
         with:
           target_branch: output
           build_dir: dist
-          token: ${{ secrets.GH_TOKEN }}
+          pat: ${{ secrets.GH_TOKEN }}
