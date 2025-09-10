@@ -43,4 +43,5 @@ jobs:
         with:
           target_branch: output
           build_dir: dist
-          pat: ${{ secrets.GH_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
